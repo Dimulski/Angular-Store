@@ -1,0 +1,21 @@
+#header {
+  background: #212121;
+  margin-bottom: 20px;
+  padding: 6px;
+}
+
+.welcome {
+  color: rgb(153, 153, 153)
+}
+
+.fa {
+  color: white;
+}
+
+.cart {
+  text-align: right;
+}
+
+.temp-separator {
+  color: grey;
+}
