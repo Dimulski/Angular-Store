@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-top-ten',
@@ -12,4 +13,5 @@ export class TopTenComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input() games: Game[];
 }

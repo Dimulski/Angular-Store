@@ -10,7 +10,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components//shared/header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { GamesComponent } from './components/games/games.component';
-
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { GamesComponent } from './components/games/games.component';
     TopTenComponent,
     FooterComponent,
     HeaderComponent,
-    GamesComponent
+    GamesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
