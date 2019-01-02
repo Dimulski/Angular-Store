@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="games">
   <section id="content-wrapper">
     <div class="breadcrumb">
     </div>
@@ -26,7 +26,35 @@
       <section id="maincontent" class="col-sm-9 sideleft category" role="main">
         <div class="mainborder">
           <header class="heading">
-            <h1 class="page-header">Games</h1>
+            <div >
+            <div *ngFor="let game of games" class="grid-box">
+              <div class="inner">
+                <div class="image">
+                  <!-- this link should be to the productId -->
+                  <a href={{game.thumbnailUrl}}>
+                    <img src={{game.thumbnailUrl}} alt={{game.name}}>
+                  </a>
+                </div>
+                <div class="name">
+                  <a href={{game.thumbnailUrl}}>
+                    {{game.name}}
+                  </a>
+                </div>
+                <div class="price">
+                  {{game.price}}
+                </div>
+                <div class="cart">
+                  <!-- TODO: fix onclick  onclick="addToCart('{{game.id}}');"  -->
+                  <input type="button" value="Buy" class="button" />
+                </div>
+              </div>
+            </div>
+      
+            <!-- fix the hack -->
+            <div style="color: white; user-select: none">
+                Links
+              </div>
+            </div>
           </header>
         </div>
       </section>
