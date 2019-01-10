@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-store App', () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('angular-store App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getTitleText()).toEqual('Welcome to angular-store!');
   });
 });
