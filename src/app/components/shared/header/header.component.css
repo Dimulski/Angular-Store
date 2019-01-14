@@ -1,0 +1,103 @@
+#header {
+  clear: both;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 6px;
+
+  background: #212121;
+
+  /* Indirect CSS */
+  font-family: Open Sans;
+  font-size: 11px;
+
+  box-sizing: border-box;
+}
+/* 
+div {
+  display: block;
+} */
+
+body, p {
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  line-height: 1.428571429;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+
+#header .container {
+  line-height: 27px;
+  font-size: 11px;
+}
+
+
+
+.row {
+  clear: both;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.welcome {
+  position: relative;
+  min-height: 1px;
+}
+
+.welcome {
+  color: #999;
+  font-size: 9px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.welcome a {
+  color: #FFF;
+  transition: all 1s ease;
+}
+
+.welcome a:hover {
+  color: #24C0EB;
+  text-decoration: none;
+}
+
+.cart a {
+  float: right;
+  color: #24C0EB;
+  transition: all 1s ease;
+}
+
+.cart a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#temp-separator {
+  color: aqua;
+  float: right;
+}
+
+#cart-img {
+  width: 10.5%;
+  margin-bottom: 4px;
+}
+
+#cart-details {
+  position: absolute;
+  right: 0;
+  margin-right: -3px;
+  margin-top: 6px;
+  width: 18px;
+}
+
+@media (max-width: 575px) {
+  .welcome {
+    display: none;
+  }
+}
