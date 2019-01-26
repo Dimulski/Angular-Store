@@ -1,17 +1,35 @@
-<div id="header">
-  <div class="container">
+<header id="header">
+  <div class="container elements col-sm-12">
     <div class="row">
-      <div class="welcome col-sm-6 hidden-xs-up">
-        Hello! Please <a href="#login">Login</a> or <a href="#register">Register</a>! 
-      </div>
-      <div class="cart col-sm-6">
-        <a href="#cart" title="My Cart">
-          <img id="cart-img" src="assets\icons\baseline_shopping_cart_white_18dp.png" alt="cart">
-          0 produdct(s) - $0,00
-          <img src="assets\icons\separator-line.png" alt="separator-line">
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a id="navbar-logo" href="/">
+          <img id="logo" title="ANGULAR STORE" alt="logo" src="assets\icons\logo.png">
         </a>
-        <img id="cart-details" src="assets\icons\arrow-down.png" alt="cart">
-      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/games">Games</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sales">Sales</a>
+            </li>
+          </ul>
+          <form class="form-inline">
+            <div class="input-group">
+              <input type="text" id="search-box" placeholder="Search" autocomplete="off">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary" type="button" id="search-button">
+                    <img class="icon-search" src="assets\icons\search-icon.png">
+                  </button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </nav>
     </div>
   </div>
-</div>
+</header>
