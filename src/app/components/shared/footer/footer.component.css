@@ -1,9 +1,25 @@
-#footer {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  margin: auto;
+.row {
+  display: inline-flex;
+  color: #A4A6AA;
 }
 
-.footer-copyright {
+.container {
   text-align: center;
+}
+
+#footend {
+  background: #323232;
+  padding: 10px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+#copy > a {
+  color: #24C0EB;
+  transition: all 1s ease;
+}
+
+#copy > a:hover {
+  color: #FFF;
+  text-decoration: none;
 }
