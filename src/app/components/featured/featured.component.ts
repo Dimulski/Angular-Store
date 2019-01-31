@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-featured',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturedComponent implements OnInit {
 
-  constructor() { }
+  // I think IoC is needed here
+  featuredGames: Observable<any[]>;
+
+  constructor(db: AngularFirestore) {
+    this.featuredGames = db.collection('/games', ref => ref.orderBy('slide_num')).valueChanges();
+  }
 
   ngOnInit() {
   }
-
 }
