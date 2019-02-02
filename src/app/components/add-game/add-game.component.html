@@ -1,0 +1,37 @@
+<section id="addGame">
+  <div class="container col-sm-12">
+    <div id="addGameRow" class="row">
+      <div class="form-wrap">
+        <h1>Add Game</h1>
+        <form role="form" id="addGameForm" autocomplete="off">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="productId" name="productId" placeholder="Product id">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" [(ngModel)]="price" name="price" placeholder="Price">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="developer" name="developer" placeholder="Developer">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="description" name="description" placeholder="Description">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="slide" name="slide" placeholder="Slide picture url">
+            </div>
+          <div class="form-group">
+            <input type="number" class="form-control" [(ngModel)]="slideNum" name="slideNum" placeholder="Featured slide index">
+          </div>
+          <div class="checkbox">
+            <input id="checkbox" type="checkbox" class="form-control" [(ngModel)]="inStock" name="inStock" placeholder="In Stock?">
+            <span class="label">In Stock?</span>
+          </div>
+          <button id="addGameButton" class="btn btn-primary" (click)="addPost()">Add Game</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

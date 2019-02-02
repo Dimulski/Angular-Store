@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { environment } from './../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database'; // redundant 
 import { AngularFireStorageModule } from 'angularfire2/storage'; // redundant currently
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AddGameComponent } from './components/add-game/add-game.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     FeaturedComponent,
     GamesComponent,
     HomeComponent,
-    TopbarComponent
+    TopbarComponent,
+    AddGameComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

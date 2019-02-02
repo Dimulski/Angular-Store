@@ -1,0 +1,95 @@
+#addGameContainer {
+  padding-top: 50px;
+}
+
+#addGame .form-wrap {
+  width: 30%;
+  margin: 0 auto;
+}
+
+#addGameRow {
+  margin-left: 0;
+  margin-right: 0;
+  background: white;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+#addGameButton {
+  margin-top: 10px;
+  width: 100%;
+}
+
+#addGame h1 {
+  color: #1fa67b;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+#addGame .form-group {
+  margin-bottom: 25px;
+}
+
+#addGame .checkbox {
+  margin-bottom: 20px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  display: flex;
+}
+
+#checkbox {
+  width: 33px;
+}
+
+#checkbox:focus {
+  box-shadow: none;
+}
+
+#addGame .checkbox.show:before {
+  content: '\e013';
+  color: #1fa67b;
+  font-size: 17px;
+  margin: 1px 0 0 3px;
+  position: absolute;
+  pointer-events: none;
+  font-family: 'Glyphicons Halflings';
+}
+
+#addGame .checkbox .character-checkbox {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+#addGame .checkbox .label {
+  color: #6d6d6d;
+  font-size: 1rem;
+  font-weight: normal;
+  padding-left: 10px;
+  padding-top: 6px;
+}
+
+#addGame .btn.btn-custom {
+  font-size: 14px;
+	margin-bottom: 20px;
+}
+
+#addGame .forget {
+  font-size: 13px;
+	text-align: center;
+	display: block;
+}
+
+.form-control {
+  color: #212121;
+}
