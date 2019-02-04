@@ -16,9 +16,10 @@ export class AddGameComponent implements OnInit {
   price: number;
   developer: string;
   description: string;
-  inStock: boolean;
+  cover: string;
   slide: string;
   slideNum: number;
+  inStock: boolean;
 
   constructor(private db: AngularFirestore, private addGameService: AddGameService) { }
 
@@ -28,19 +29,22 @@ export class AddGameComponent implements OnInit {
     this.addGameService.addField();
   }
 
-  addPost() { // ew
-    var gameId = this.name.trim().replace(/\s+/g, '-').toLowerCase();
-    console.log(gameId);
-    this.db.collection('games').doc(gameId).set({
+  addPost() {
+    var gameObject = {
       'name': this.name || "",
       'product_id': this.productId || "",
       'price': this.price || 0,
       'developer': this.developer || "",
       'description': this.description || "",
-      'in_stock': this.inStock || false,
+      'cover': this.cover || "",
       'slide': this.slide || "",
-      'slide_num': this.slideNum || -1
-    });
+      'in_stock': this.inStock || false
+    }
+    if (typeof this.slideNum !== 'undefined') {
+      gameObject['slide_num'] = this.slideNum;
+    } 
+
+    var gameId = this.name.trim().replace(/\s+/g, '-').toLowerCase();
+    this.db.collection('games').doc(gameId).set(gameObject);
   }
-  
 }

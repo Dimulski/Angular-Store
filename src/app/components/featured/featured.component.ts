@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class FeaturedComponent implements OnInit {
 
-  // I think IoC is needed here
+  // I think IoC is needed here; instead of this component calling /games it should get it from a service possibly
   featuredGames: Observable<any[]>;
 
   constructor(db: AngularFirestore) {
