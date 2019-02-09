@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Game } from '../../models/game';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-top-ten',
@@ -8,10 +8,9 @@ import { Game } from '../../models/game';
 })
 export class TopTenComponent implements OnInit {
 
+  @Input() allGames: Observable<any[]>;
+
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  @Input() games: Game[];
+  ngOnInit() { }
 }

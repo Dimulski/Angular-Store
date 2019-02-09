@@ -65,6 +65,7 @@ nav {
   border-bottom-left-radius: 8px;
   padding-left: 9px;
   width: 200px;
+  height: 28px;
 }
 
 #search-button {
@@ -79,6 +80,7 @@ nav {
 
 .input-group {
   height: 30px;
+
 }
 
 .icon-search {
@@ -89,8 +91,12 @@ nav {
 
 .input-group {
   border: solid 1px #888888;
-  border-radius: 8px;
+  border-radius: 9px;
   transition: all .5s ease;
+}
+
+.input-group-append {
+  height: 28px;
 }
 
 .input-group:focus-within {

@@ -1,3 +1,123 @@
+<div class="container col-sm-12">
+  <div class="top-ten">
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-hot-tab" data-toggle="pill" href="#pills-hot" role="tab" aria-controls="pills-hot" aria-selected="true">Hot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-latest-tab" data-toggle="pill" href="#pills-latest" role="tab" aria-controls="pills-latest" aria-selected="false">Latest</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-best-sellers-tab" data-toggle="pill" href="#pills-best-sellers" role="tab" aria-controls="pills-best-sellers" aria-selected="false">Best Sellers</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" id="pills-promos-tab" data-toggle="pill" href="#pills-promos" role="tab" aria-controls="pills-promos" aria-selected="false">Promos</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-hot" role="tabpanel" aria-labelledby="pills-hot-tab">
+        <div class="product-box">
+          <div *ngFor="let game of allGames | async" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
+        <div class="product-box">
+          <div *ngFor="let game of allGames | async" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-best-sellers" role="tabpanel" aria-labelledby="pills-best-sellers-tab">
+        <div class="product-box">
+          <div *ngFor="let game of allGames | async" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-promos" role="tabpanel" aria-labelledby="pills-promos-tab">
+        <div class="product-box">
+          <div *ngFor="let game of allGames | async" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 
 <div id="top-ten" class="container col-sm-12">
   <nav class="tab-bar">
     <div class="nav nav-pills" id="nav-tab" role="tablist">
@@ -13,18 +133,16 @@
   </nav>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-hot" role="tabpanel" aria-labelledby="nav-hot-pill">
-
-
-      <div *ngFor="let game of games" class="grid-box">
+      <div *ngFor="let game of allGames | async" class="grid-box">
         <div class="inner">
           <div class="image">
-            <!-- this link should be to the productId -->
-            <a href={{game.thumbnailUrl}}>
-              <img src={{game.thumbnailUrl}} alt={{game.name}}>
+            
+            <a href="game/{{game.product_id}}">
+              <img src={{game.cover}} alt={{game.product_id}}>
             </a>
           </div>
           <div class="name">
-            <a id="game-link" href={{game.thumbnailUrl}}>
+            <a id="game-link" href="game/{{game.product_id}}">
               {{game.name}}
             </a>
           </div>
@@ -32,30 +150,25 @@
             {{game.price}}
           </div>
           <div class="cart">
-            <!-- TODO: fix onclick  onclick="addToCart('{{game.id}}');"  -->
+            
             <input type="button" value="Buy" class="button" />
           </div>
         </div>
       </div>
-
-      <!-- fix the hack -->
-      <div style="color: white; user-select: none">
-          Links
-        </div>
 
     </div>
     <div class="tab-pane fade" id="nav-latest" role="tabpanel" aria-labelledby="nav-latest-pill">
 
-      <div *ngFor="let game of games" class="grid-box">
+      <div *ngFor="let game of allGames" class="grid-box">
         <div class="inner">
           <div class="image">
-            <!-- this link should be to the productId -->
-            <a href={{game.thumbnailUrl}}>
-              <img src={{game.thumbnailUrl}} alt={{game.name}}>
+            
+            <a href={{game.cover}}>
+              <img src={{game.cover}} alt={{game.name}}>
             </a>
           </div>
           <div class="name">
-            <a href={{game.thumbnailUrl}}>
+            <a href={{game.cover}}>
               {{game.name}}
             </a>
           </div>
@@ -63,23 +176,19 @@
             {{game.price}}
           </div>
           <div class="cart">
-            <!-- TODO: fix onclick  onclick="addToCart('{{game.id}}');"  -->
+            
             <input type="button" value="Buy" class="button" />
           </div>
         </div>
       </div>
 
-      <!-- fix the hack -->
-      <div style="color: white; user-select: none">
-          Links
-        </div>
 
     </div>
     <div class="tab-pane fade" id="nav-best-sellers" role="tabpanel" aria-labelledby="nav-best-sellers-pill">
-      <div *ngFor="let game of games" class="grid-box">
+      <div *ngFor="let game of allgames" class="grid-box">
         <div class="inner">
           <div class="image">
-            <!-- this link should be to the productId -->
+            
             <a href={{game.thumbnailUrl}}>
               <img src={{game.thumbnailUrl}} alt={{game.name}}>
             </a>
@@ -93,23 +202,19 @@
             {{game.price}}
           </div>
           <div class="cart">
-            <!-- TODO: fix onclick  onclick="addToCart('{{game.id}}');"  -->
+            
             <input type="button" value="Buy" class="button" />
           </div>
         </div>
       </div>
 
-      <!-- fix the hack -->
-      <div style="color: white; user-select: none">
-        Links
-      </div>
 
     </div>
     <div class="tab-pane fade" id="nav-promos" role="tabpanel" aria-labelledby="nav-promos-pill">
-      <div *ngFor="let game of games" class="grid-box">
+      <div *ngFor="let game of allGames" class="grid-box">
         <div class="inner">
           <div class="image">
-            <!-- this link should be to the productId -->
+            
             <a href={{game.thumbnailUrl}}>
               <img src={{game.thumbnailUrl}} alt={{game.name}}>
             </a>
@@ -123,17 +228,13 @@
             {{game.price}}
           </div>
           <div class="cart">
-            <!-- TODO: fix onclick  onclick="addToCart('{{game.id}}');"  -->
+            
             <input type="button" value="Buy" class="button" />
           </div>
         </div>
-      </div>
-
-     <!-- fix the hack -->
-     <div style="color: white; user-select: none">
-        Links
       </div>
 
     </div>
   </div>
 </div>
+ -->
