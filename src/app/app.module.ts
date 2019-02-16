@@ -20,6 +20,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage'; // redundant cu
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AddGameComponent } from './components/add-game/add-game.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { AddGameComponent } from './components/add-game/add-game.component';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

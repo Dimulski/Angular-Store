@@ -1,63 +1,94 @@
-<div class="container" id="games">
-  <section id="content-wrapper">
-    <div class="breadcrumb">
+<div class="container col-sm-12">
+  <div class="games">
+    <div class="nav flex-column nav-pills" id="genres" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
     </div>
-    <div id="notification">
-    </div>
-    <div class="row">
-      <aside id="column-left" class="col-sm-3 hidden-xs-sidebar" role="complementary" style="opacity: 1">
-        <div class="inner">
-          <div class="box">
-            <h4 class="module-header">Genres</h4>
-            <div class="box-content box-category">
-              <ul>
-                <li>Action</li>
-                <li>FPS</li>
-                <li>RPG</li>
-                <li>Horror</li>
-                <li>Platformer</li>
-                <li>Strategy</li>
-                <li>Indie</li>
-              </ul>
+    <div class="tab-content" id="genres-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        <div class="product-box">
+          <div *ngFor="let game of games | paginate: { itemsPerPage: 8, currentPage: p }" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
             </div>
           </div>
         </div>
-      </aside>
-      <section id="maincontent" class="col-sm-9 sideleft category" role="main">
-        <div class="mainborder">
-          <header class="heading">
-            <div >
-            <div *ngFor="let game of games" class="grid-box">
-              <div class="inner">
-                <div class="image">
-                  <!-- this link should be to the productId -->
-                  <a href={{game.thumbnailUrl}}>
-                    <img src={{game.thumbnailUrl}} alt={{game.name}}>
-                  </a>
-                </div>
-                <div class="name">
-                  <a href={{game.thumbnailUrl}}>
-                    {{game.name}}
-                  </a>
-                </div>
-                <div class="price">
-                  {{game.price}}
-                </div>
-                <div class="cart">
-                  <!-- TODO: fix onclick  onclick="addToCart('{{game.id}}');"  -->
-                  <input type="button" value="Buy" class="button" />
-                </div>
-              </div>
-            </div>
-      
-            <!-- fix the hack -->
-            <div style="color: white; user-select: none">
-                Links
-              </div>
-            </div>
-          </header>
+        <div class="pagination-box">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
-      </section>
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <div class="product-box">
+          <div *ngFor="let game of games | paginate: { itemsPerPage: 8, currentPage: p }" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-box">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <div class="product-box">
+          <div *ngFor="let game of games | paginate: { itemsPerPage: 8, currentPage: p }" class="grid-box">
+            <div class="inner">
+              <div class="image">
+                <a href="game/{{game.product_id}}">
+                  <img src={{game.cover}} alt={{game.product_id}}>
+                </a>
+              </div>
+              <div class="name">
+                <a id="game-link" href="game/{{game.product_id}}">
+                  {{game.name}}
+                </a>
+              </div>
+              <div class="price">
+                ${{game.price}}
+              </div>
+              <div class="cart">
+                <input type="button" value="Buy" class="button" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-box">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
     </div>
-  </section>
+  </div>
 </div>
