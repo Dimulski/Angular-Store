@@ -1,15 +1,22 @@
 <div class="container col-sm-12">
   <div class="games">
     <div class="nav flex-column nav-pills" id="genres" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+      <a *ngFor="let genre of genres; let firstGenre = first"
+      [class.active]="firstGenre"
+      [attr.aria-selected.true]="firstGenre"
+      class="nav-link" data-toggle="pill" role="tab"
+      [attr.id]="'v-pills-' + genre + '-tab'"
+      [attr.href]="'#v-pills-' + genre"
+      [attr.aria-controls]="'v-pills-' + genre">{{genre}}</a>
     </div>
     <div class="tab-content" id="genres-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div *ngFor="let genre of genresGames | keyvalue; let firstGenre = first"
+      class="tab-pane fade" role="tabpanel"
+      [class.active]="firstGenre" [class.show]="firstGenre"
+      [attr.id]="'v-pills-' + genre.key"
+      [attr.aria-labelledby]="'v-pills-' + genre.key + '-tab'">
         <div class="product-box">
-          <div *ngFor="let game of games | paginate: { itemsPerPage: 8, currentPage: p }" class="grid-box">
+          <div *ngFor="let game of genre.value[0] | paginate: { id: genre.key, itemsPerPage: 5, currentPage: p[genre.key] }" class="grid-box">
             <div class="inner">
               <div class="image">
                 <a href="game/{{game.product_id}}">
@@ -31,64 +38,9 @@
           </div>
         </div>
         <div class="pagination-box">
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          <pagination-controls class="my-pagination" previousLabel="<" nextLabel=">" id={{genre.key}} (pageChange)="p[genre.key] = $event"></pagination-controls>
         </div>
       </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <div class="product-box">
-          <div *ngFor="let game of games | paginate: { itemsPerPage: 8, currentPage: p }" class="grid-box">
-            <div class="inner">
-              <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
-                </a>
-              </div>
-              <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
-                  {{game.name}}
-                </a>
-              </div>
-              <div class="price">
-                ${{game.price}}
-              </div>
-              <div class="cart">
-                <input type="button" value="Buy" class="button" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pagination-box">
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        <div class="product-box">
-          <div *ngFor="let game of games | paginate: { itemsPerPage: 8, currentPage: p }" class="grid-box">
-            <div class="inner">
-              <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
-                </a>
-              </div>
-              <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
-                  {{game.name}}
-                </a>
-              </div>
-              <div class="price">
-                ${{game.price}}
-              </div>
-              <div class="cart">
-                <input type="button" value="Buy" class="button" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pagination-box">
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
     </div>
   </div>
 </div>

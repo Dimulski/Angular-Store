@@ -6,6 +6,7 @@
 #genres {
   float: left;
   width: 20%;
+  margin-top: 20px;
   padding-left: 15px;
 }
 
@@ -33,7 +34,6 @@
 
 .inner {
   border-width: 1px;
-  border-bottom: none;
   position: absolute;
   z-index: 45;
   border-style: solid;
@@ -152,4 +152,25 @@ a {
 .pagination-box {
   margin-left: 45%;
   margin-bottom: 50px;
+}
+
+.my-pagination /deep/ .ngx-pagination .disabled::before,
+.my-pagination /deep/ .ngx-pagination a::before,
+.my-pagination /deep/ .ngx-pagination .disabled::after,
+.my-pagination /deep/ .ngx-pagination a::after  {
+  display: none;
+}
+
+.my-pagination /deep/ .ngx-pagination a:hover,
+.my-pagination /deep/ .ngx-pagination button:hover {
+  background: #e6e6e6;
+  text-decoration: none;
+}
+
+.my-pagination /deep/ a, .my-pagination /deep/ .current {
+  border-radius: 20px;
+}
+
+.my-pagination /deep/ .ngx-pagination a:hover { /* ..... */
+  outline: none;
 }

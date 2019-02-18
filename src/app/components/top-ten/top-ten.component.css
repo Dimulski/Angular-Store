@@ -74,7 +74,6 @@
 
 .inner {
   border-width: 1px;
-  border-bottom: none;
   position: absolute;
   z-index: 45;
   border-style: solid;
