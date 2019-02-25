@@ -19,12 +19,12 @@
           <div *ngFor="let game of genre.value[0] | paginate: { id: genre.key, itemsPerPage: 5, currentPage: p[genre.key] }" class="grid-box">
             <div class="inner">
               <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
+                <a href="game/{{game.name  | toLowerHyphen}}">
+                  <img src={{game.cover}} alt={{game.name}}>
                 </a>
               </div>
               <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
+                <a id="game-link" href="game/{{game.name | toLowerHyphen}}">
                   {{game.name}}
                 </a>
               </div>

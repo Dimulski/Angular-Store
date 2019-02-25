@@ -1,0 +1,154 @@
+<div class="container col-sm-12">
+  <div class="game" *ngIf="game | async as game">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="image">
+          <a>
+            <img src="{{game.cover}}">
+          </a>
+        </div>
+        <div class="highlights">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                    <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_2036ad636be8fa2c4bf926004f369bb97490350a.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                    <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_2036ad636be8fa2c4bf926004f369bb97490350a.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+                  <div class="thumbnail col-md-3">
+                    <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_2036ad636be8fa2c4bf926004f369bb97490350a.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
+                  </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class="game-info">
+          <header>
+            <h1 class="page-header">{{game.name}}</h1>
+          </header>
+          <div class="row price-buy">
+            <div class="price col-sm-7">
+              Price: <span id="price">${{game.price}}</span>
+            </div>
+            <div class="buy col-sm-5">
+              <input type="button" value="Buy" id="buy-button" class="button">
+            </div>
+          </div>
+          <div class="details table">
+            <div class="row">
+              <div class="label">Genre:</div>
+              <div class="content">{{game.genres.join(' - ')}}</div>
+            </div>
+            <div class="row">
+              <div class="label">Released:</div>
+              <div class="content">August 30, 2016</div>
+            </div>
+            <div class="row">
+              <div class="label">Developer:</div>
+              <div class="content">{{game.developer}}</div>
+            </div>
+            <div class="row">
+              <div class="label">Product ID:</div>
+              <div class="content">{{game.product_id}}</div>
+            </div>
+            <div class="row">
+              <div class="label">Аvailability:</div>
+              <div class="content">{{game.in_stock?"In stock":"Out of stock"}}</div>
+            </div>
+          </div>
+          <div class="desc-reqs">
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Description</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-requirements-tab" data-toggle="pill" href="#pills-requirements" role="tab" aria-controls="pills-requirements" aria-selected="true">System Requirements</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                {{game.description}}
+              </div>
+              <div class="tab-pane fade" id="pills-requirements" role="tabpanel" aria-labelledby="pills-requirements-tab">
+                <div class="requirements table">
+                  <div class="row">
+                    <div class="label">System:</div>
+                    <div class="content">Windows 7 / 8 (64bit)</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">Processor:</div>
+                    <div class="content">Intel CPU Core i5-2500K 3.3 GHz or AMD CPU Phenom II X4 940</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">Memory:</div>
+                    <div class="content">6 GB RAM</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">Graphics:</div>
+                    <div class="content">Nvidia GPU GeForce GTX 660 / AMD GPU Radeon HD 7870</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">DirectX:</div>
+                    <div class="content">11</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">Storage:</div>
+                    <div class="content">35 GB of available space</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

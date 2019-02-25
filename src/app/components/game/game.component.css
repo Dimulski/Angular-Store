@@ -1,0 +1,165 @@
+.game {
+  background: white;
+  margin-bottom: 40px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 35px;
+}
+
+.game .image {
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.game img {
+  max-width: 100%;
+}
+
+.game .game-info {
+  border-left: 1px solid #D4D4D4;
+  padding-left: 20px;
+}
+
+.game header {
+  padding: 1px 0px 1px;
+}
+
+.page-header {
+  text-align: left;
+  padding-bottom: 8px;
+  margin: 0px 0px 18px;
+  font-weight: normal;
+  font-size: 28px;
+}
+
+.price-buy {
+  clear: both;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-bottom: 1px dotted #ddd;
+}
+
+.price {
+  padding-bottom: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #333333;
+}
+
+#price {
+  font-size: 22px;
+  color: #24C0EB;
+}
+
+#buy-button {
+  padding: 8px 12px;
+  font-size: 15px;
+  color: #FFF !important;
+  transition: background-color ease-in 0.5s;
+  transition-duration: 1s;
+  border-color: #146D85 !important;
+  background-color: #24C0EB !important;
+  background-repeat: repeat-x !important;
+  background-image: -webkit-linear-gradient(top, #24C0EB, #1B90B0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  border-radius: 2px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  -webkit-appearance: button;
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid transparent;
+  line-height: 1.428571429;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+}
+
+#buy-button:hover {
+  padding: 8px 12px;
+  font-size: 15px;
+  color: #FFF !important;
+  transition: background-color 1s ease-in 0s;
+  background: none repeat scroll 0% 0% #24C0EB;
+  
+}
+
+#buy-button:active {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.details {
+  margin-left: 30px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.details .label, .desc-reqs .label {
+  width: 110px;
+  color: rgba(33,33,33,.7);
+}
+
+.desc-reqs {
+  font-size: 14px;
+}
+
+.tab-content {
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+.requirements {
+  margin-left: 15px;
+  padding-right: 25px;
+}
+
+.requirements .row {
+  line-height: 33px;
+  font-size: 14px;
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.highlights {
+  margin-bottom: 30px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+.thumbnail {
+  float: left;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+.carousel-indicators {
+  top: 50px;
+}
+
+.carousel-control-prev {
+  left: -50px;
+}
+
+.carousel-control-next {
+  right: -50px;
+}
+
+.carousel-control-next-icon {
+  background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%6C757D' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  color: grey;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%6C757D' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+}
+
+.carousel-indicators li {
+  background-color: grey;
+}
+

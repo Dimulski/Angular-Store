@@ -20,7 +20,7 @@ export class GamesComponent implements OnInit {
 
     this.genres = [];
     this.genresGames = [];
-    db.collection('/genres').snapshotChanges().subscribe((genres) => {
+    db.collection('/genres').snapshotChanges().subscribe((genres) => { // gets genres, fills each genre with games
       genres.forEach(genre => {
         let genreName = genre.payload.doc.id.replace(/\s+/, '-');
         this.genres.push(genreName);

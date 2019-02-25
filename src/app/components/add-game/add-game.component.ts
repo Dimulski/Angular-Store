@@ -44,7 +44,7 @@ export class AddGameComponent implements OnInit {
       gameObject['slide_num'] = this.slideNum;
     } 
 
-    var gameId = this.name.trim().replace(/\s+/g, '-').toLowerCase();
+    var gameId = this.name.trim().toLowerCase().replace(/\s+/g, '-');
     this.db.collection('games').doc(gameId).set(gameObject);
   }
 }

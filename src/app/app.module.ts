@@ -21,6 +21,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AddGameComponent } from './components/add-game/add-game.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { GameComponent } from './components/game/game.component';
+import { ToLowerHyphenPipe } from './pipes/to-lower-hyphen.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     GamesComponent,
     HomeComponent,
     TopbarComponent,
-    AddGameComponent
+    AddGameComponent,
+    GameComponent,
+    ToLowerHyphenPipe
   ],
   imports: [
     BrowserModule,

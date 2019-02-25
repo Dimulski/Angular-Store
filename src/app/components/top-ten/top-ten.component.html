@@ -20,12 +20,12 @@
           <div *ngFor="let game of allGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
+                <a href="game/{{game.name | toLowerHyphen}}">
+                  <img src={{game.cover}} alt={{game.name}}>
                 </a>
               </div>
               <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
+                <a id="game-link" href="game/{{game.name | toLowerHyphen}}">
                   {{game.name}}
                 </a>
               </div>
@@ -44,12 +44,12 @@
           <div *ngFor="let game of allGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
+                <a href="game/{{game.name | toLowerHyphen}}">
+                  <img src={{game.cover}} alt={{game.name}}>
                 </a>
               </div>
               <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
+                <a id="game-link" href="game/{{game.name | toLowerHyphen}}">
                   {{game.name}}
                 </a>
               </div>
@@ -68,12 +68,12 @@
           <div *ngFor="let game of allGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
+                <a href="game/{{game.name | toLowerHyphen}}">
+                  <img src={{game.cover}} alt={{game.name}}>
                 </a>
               </div>
               <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
+                <a id="game-link" href="game/{{game.name | toLowerHyphen}}">
                   {{game.name}}
                 </a>
               </div>
@@ -92,12 +92,12 @@
           <div *ngFor="let game of allGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
-                <a href="game/{{game.product_id}}">
-                  <img src={{game.cover}} alt={{game.product_id}}>
+                <a href="game/{{game.name | toLowerHyphen}}">
+                  <img src={{game.cover}} alt={{game.name}}>
                 </a>
               </div>
               <div class="name">
-                <a id="game-link" href="game/{{game.product_id}}">
+                <a id="game-link" href="game/{{game.name | toLowerHyphen}}">
                   {{game.name}}
                 </a>
               </div>
@@ -114,127 +114,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- 
-<div id="top-ten" class="container col-sm-12">
-  <nav class="tab-bar">
-    <div class="nav nav-pills" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-hot-pill" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot"
-        aria-selected="true">Hot</a>
-      <a class="nav-item nav-link" id="nav-latest-pill" data-toggle="tab" href="#nav-latest" role="tab" aria-controls="nav-latest"
-        aria-selected="false">Latest</a>
-      <a class="nav-item nav-link" id="nav-best-sellers-pill" data-toggle="tab" href="#nav-best-sellers" role="tab" aria-controls="nav-best-sellers"
-        aria-selected="false">Best Sellers</a>
-      <a class="nav-item nav-link" id="nav-promos-pill" data-toggle="tab" href="#nav-promos" role="tab" aria-controls="nav-promos"
-        aria-selected="false">Promos</a>
-    </div>
-  </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-hot" role="tabpanel" aria-labelledby="nav-hot-pill">
-      <div *ngFor="let game of allGames | async" class="grid-box">
-        <div class="inner">
-          <div class="image">
-            
-            <a href="game/{{game.product_id}}">
-              <img src={{game.cover}} alt={{game.product_id}}>
-            </a>
-          </div>
-          <div class="name">
-            <a id="game-link" href="game/{{game.product_id}}">
-              {{game.name}}
-            </a>
-          </div>
-          <div class="price">
-            {{game.price}}
-          </div>
-          <div class="cart">
-            
-            <input type="button" value="Buy" class="button" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="tab-pane fade" id="nav-latest" role="tabpanel" aria-labelledby="nav-latest-pill">
-
-      <div *ngFor="let game of allGames" class="grid-box">
-        <div class="inner">
-          <div class="image">
-            
-            <a href={{game.cover}}>
-              <img src={{game.cover}} alt={{game.name}}>
-            </a>
-          </div>
-          <div class="name">
-            <a href={{game.cover}}>
-              {{game.name}}
-            </a>
-          </div>
-          <div class="price">
-            {{game.price}}
-          </div>
-          <div class="cart">
-            
-            <input type="button" value="Buy" class="button" />
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-    <div class="tab-pane fade" id="nav-best-sellers" role="tabpanel" aria-labelledby="nav-best-sellers-pill">
-      <div *ngFor="let game of allgames" class="grid-box">
-        <div class="inner">
-          <div class="image">
-            
-            <a href={{game.thumbnailUrl}}>
-              <img src={{game.thumbnailUrl}} alt={{game.name}}>
-            </a>
-          </div>
-          <div class="name">
-            <a href={{game.thumbnailUrl}}>
-              {{game.name}}
-            </a>
-          </div>
-          <div class="price">
-            {{game.price}}
-          </div>
-          <div class="cart">
-            
-            <input type="button" value="Buy" class="button" />
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-    <div class="tab-pane fade" id="nav-promos" role="tabpanel" aria-labelledby="nav-promos-pill">
-      <div *ngFor="let game of allGames" class="grid-box">
-        <div class="inner">
-          <div class="image">
-            
-            <a href={{game.thumbnailUrl}}>
-              <img src={{game.thumbnailUrl}} alt={{game.name}}>
-            </a>
-          </div>
-          <div class="name">
-            <a href={{game.thumbnailUrl}}>
-              {{game.name}}
-            </a>
-          </div>
-          <div class="price">
-            {{game.price}}
-          </div>
-          <div class="cart">
-            
-            <input type="button" value="Buy" class="button" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
- -->
