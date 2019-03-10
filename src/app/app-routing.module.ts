@@ -4,12 +4,22 @@ import { GamesComponent } from './components/games/games.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddGameComponent } from './components/add-game/add-game.component';
 import { GameComponent } from './components/game/game.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuard } from './core/auth.guard';
+import { AdminGuard } from './core/admin.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'add-game', component: AddGameComponent },
-  { path: 'game/:name', component: GameComponent }
+  { path: 'add-game', component: AddGameComponent, canActivate: [AdminGuard] },
+  { path: 'game/:name', component: GameComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: UserProfileComponent },
+  { path: '404', component: NotFoundComponent }
 ];
 
 @NgModule({

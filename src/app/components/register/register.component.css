@@ -1,0 +1,27 @@
+.register {
+  background: white;
+  padding-top: 30px;
+  padding-bottom: 120px;
+}
+
+.form {
+  margin: 0 auto;
+}
+
+h4 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form .btn {
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
+}
+
+.register-btn:hover, .register-btn:active {
+  background: #86ac2d !important;
+}

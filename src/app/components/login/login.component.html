@@ -1,0 +1,25 @@
+<div class="container col-sm-12">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class="login">
+    <form class="form col-sm-3" method="post">
+      <h4>Login</h4>
+      <div class="social-btn text-center">
+        <a (click)="auth.facebookLogin()" class="btn btn-primary btn-block btn-lg"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+        <a (click)="auth.twitterLogin()" class="btn btn-info btn-block btn-lg"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>
+        <a (click)="auth.googleLogin()" class="btn btn-danger btn-block btn-lg"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+      </div>
+      <div class="or-seperator"><i>or</i></div>
+      <div class="form-group">
+        <input #email type="text" class="form-control" name="email" placeholder="Email" required="required" autocomplete="off">		
+      </div>
+      <div class="form-group">
+          <input #password type="password" class="form-control" name="password" placeholder="Password" required="required" autocomplete="off">	
+      </div>        
+      <div class="form-group">
+        <button type="submit" (click)="auth.login(email.value, password.value)" class="btn btn-primary btn-lg btn-block login-btn">Sign in</button>
+      </div>
+      <p class="text-center small"><a href="#">Forgot Password?</a></p>
+      <p class="text-center small">Don't have an account? <a href="#">Sign up here!</a></p>
+    </form>
+  </div>
+</div>

@@ -23,6 +23,11 @@ import { AddGameComponent } from './components/add-game/add-game.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { GameComponent } from './components/game/game.component';
 import { ToLowerHyphenPipe } from './pipes/to-lower-hyphen.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { CoreModule } from './core/core.module';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,11 @@ import { ToLowerHyphenPipe } from './pipes/to-lower-hyphen.pipe';
     TopbarComponent,
     AddGameComponent,
     GameComponent,
-    ToLowerHyphenPipe
+    ToLowerHyphenPipe,
+    LoginComponent,
+    UserProfileComponent,
+    NotFoundComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,8 @@ import { ToLowerHyphenPipe } from './pipes/to-lower-hyphen.pipe';
     AngularFireStorageModule,
     AngularFirestoreModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
