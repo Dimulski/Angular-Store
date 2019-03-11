@@ -157,8 +157,6 @@ export class AuthService {
     })
   }
   
-
-
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
