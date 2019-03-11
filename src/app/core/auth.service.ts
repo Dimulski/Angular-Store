@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as firebase from 'firebase/app';
@@ -16,7 +16,7 @@ export class AuthService {
 
   user$: Observable<User>;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router, private ngZone: NgZone) {
     // Get auth data, then get firestore user document || null
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -30,26 +30,77 @@ export class AuthService {
 
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.oAuthLogin(provider);
+    this.oAuthLogin(provider);
   }
 
   facebookLogin() {
     const provider = new firebase.auth.FacebookAuthProvider();
-    return this.oAuthLogin(provider);
+    this.oAuthLogin(provider);
   }
 
   twitterLogin() {
     const provider = new firebase.auth.TwitterAuthProvider();
-    return this.oAuthLogin(provider);
+    this.oAuthLogin(provider);
+  }
+
+  private oAuthLogin(provider) {
+    this.afAuth.auth.signInWithPopup(provider)
+    .then((credential) => {
+      this.updateUserData(credential.user).catch(error => {
+        console.log(error); // todo: notify properly
+      });
+      this.ngZone.run(() => this.router.navigate(['/profile']));
+    }).catch((error) => {
+      this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(providers => {
+        let provider = undefined;
+        switch (providers[0]) {
+          case 'google.com': {
+            provider = new firebase.auth.GoogleAuthProvider();
+          }
+          break;
+          case 'facebook.com': {
+            provider = new firebase.auth.FacebookAuthProvider();
+          }
+          break;
+          case 'twitter.com': {
+            provider = new firebase.auth.TwitterAuthProvider();
+          }
+          break;
+          case 'password': {
+            this.afs.collection('/users', ref => ref.where('email', '==', error.email))
+            .valueChanges().subscribe(userObj => {
+              let user = userObj[0];
+              this.afAuth.auth.signInAndRetrieveDataWithCredential(
+                firebase.auth.EmailAuthProvider.credential(user['email'], user['password']))
+              .then(emailProviderUserObj => { // todo: rename
+                emailProviderUserObj.user.linkAndRetrieveDataWithCredential(error.credential);
+                this.router.navigate(['/profile']);
+              })
+            })
+            return;
+          }
+          default: {
+            console.log(providers[0])
+          }
+          break;
+        }
+        this.afAuth.auth.signInWithPopup(provider).then(primaryProviderUserObj => {
+          this.afAuth.auth.signInAndRetrieveDataWithCredential(primaryProviderUserObj.credential).then(authenticatedUserObj => {
+            authenticatedUserObj.user.linkAndRetrieveDataWithCredential(error.credential);
+          })
+        })
+        this.ngZone.run(() => this.router.navigate(['/profile']));
+      });
+    });
   }
 
   login(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .then(f => this.router.navigate(['/profile']))
-    .catch(err => {
-      switch (err.code) {
+    .then(() => this.router.navigate(['/profile']))
+    .catch(error => {
+      switch (error.code) {
         case 'auth/user-not-found':
-        alert('No user with that email exists!');
+        alert('No user with that email exists.');
         break;
 
         case 'auth/wrong-password':
@@ -60,20 +111,21 @@ export class AuthService {
             .then(googleUserObj => {
               let emailUserCredential = firebase.auth.EmailAuthProvider.credential(email, password)
               googleUserObj.user.linkAndRetrieveDataWithCredential(emailUserCredential)
+              this.ngZone.run(() => this.router.navigate(['/profile']));
             });
           } else {
-            // TODO: notify user properly
+            // TODO: notify user properly and test error cases
             alert('Invalid password!');
           }
         });
         break;
 
         default:
-        alert(err.message);
-        alert(err.code);
+        alert(error.message);
+        alert(error.code);
         break;
       }
-    }).finally(() => this.router.navigate(['/profile']));;
+    });;
   }
 
   register(email: string, password: string) {
@@ -93,8 +145,10 @@ export class AuthService {
       data['password'] = password;
 
       userRef.set(data, { merge: true }); // merge when registering might be unnecessary
-      
-    }).finally(() => this.router.navigate(['/profile']));
+      this.router.navigate(['/profile'])
+    }).catch(error => {
+      alert(error.message);
+    })
   }
 
   signOut() {
@@ -103,54 +157,7 @@ export class AuthService {
     })
   }
   
-  private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-    .then((credential) => {
-      this.updateUserData(credential.user).catch(err => {
-        console.log(err);
-      })
-    }).catch((err) => {
-      this.afAuth.auth.fetchSignInMethodsForEmail(err.email).then(providers => {
-        let provider = undefined;
-        switch (providers[0]) {
-          case 'google.com': {
-            provider = new firebase.auth.GoogleAuthProvider();
-          }
-          break;
-          case 'facebook.com': {
-            provider = new firebase.auth.FacebookAuthProvider();
-          }
-          break;
-          case 'twitter.com': {
-            provider = new firebase.auth.TwitterAuthProvider();
-          }
-          break;
-          case 'password': {
-            this.afs.collection('/users', ref => ref.where('email', '==', err.email))
-            .valueChanges().subscribe(userObj => {
-              let user = userObj[0];
-              this.afAuth.auth.signInWithCredential(firebase.auth.EmailAuthProvider.credential(user['email'], user['password']))
-              .then(emailProviderUser => {
-                emailProviderUser.linkWithCredential(err.credential);
-              })
-            })
-            return;
-          }
-          default: {
-            console.log(providers[0])
-          }
-          break;
-        }
-        this.afAuth.auth.signInWithPopup(provider).then(user => {
-          this.afAuth.auth.currentUser.linkWithCredential
-          console.log(user);
-          this.afAuth.auth.signInWithCredential(user.credential).then(daUser => {
-            daUser.linkWithCredential(err.credential);
-          })
-        })
-      });
-    }).finally(() => this.router.navigate(['/profile']));
-  }
+
 
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
