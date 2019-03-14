@@ -14,10 +14,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/games">Games</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/sales">Sales</a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="auth.canEdit(auth.user$ | async)">
               <a class="nav-link" href="/add-game">Add Game</a>
             </li>
           </ul>

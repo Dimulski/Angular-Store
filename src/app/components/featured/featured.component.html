@@ -6,7 +6,7 @@
   <div class="carousel-inner">
     <div class="carousel-item" *ngFor="let game of featuredGames | async; let firstGame = first"
     [class.active]="firstGame">
-    <a href="game/{{game.product_id}}">
+    <a href="game/{{game.name | toLowerHyphen}}">
       <img class="d-block w-100" src="{{game.slide}}">
     </a>
     </div>
