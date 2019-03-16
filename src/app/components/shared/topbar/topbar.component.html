@@ -21,7 +21,7 @@
       <div class="cart col-sm-6">
         <a href="#cart" title="My Cart">
           <img id="cart-img" src="assets\icons\shopping-cart.png" alt="cart">
-          0 produdct(s) - $0,00
+            {{ cart.getProductCount() }} produdct(s) - ${{ cart.getTotalPrice() }}
           <img src="assets\icons\separator-line.png" alt="separator-line">
         </a>
         <img id="cart-details" src="assets\icons\arrow-down.png" alt="cart">

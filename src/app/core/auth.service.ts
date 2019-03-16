@@ -16,7 +16,11 @@ export class AuthService {
 
   user$: Observable<User>;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router, private ngZone: NgZone) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router,
+    private ngZone: NgZone) {
     // Get auth data, then get firestore user document || null
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -46,9 +50,9 @@ export class AuthService {
   private oAuthLogin(provider) {
     this.afAuth.auth.signInWithPopup(provider)
     .then((credential) => {
-      this.updateUserData(credential.user).catch(error => {
-        console.log(error); // todo: notify properly
-      });
+      // this.updateUserData(credential.user).catch(error => { // updating might not be necessary
+      //   console.log(error); // todo: notify properly
+      // });
       this.ngZone.run(() => this.router.navigate(['/profile']));
     }).catch((error) => {
       this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(providers => {
