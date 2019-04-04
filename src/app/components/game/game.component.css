@@ -80,12 +80,8 @@
 }
 
 #buy-button:hover {
-  padding: 8px 12px;
-  font-size: 15px;
-  color: #FFF !important;
   transition: background-color 1s ease-in 0s;
   background: none repeat scroll 0% 0% #24C0EB;
-  
 }
 
 #buy-button:active {

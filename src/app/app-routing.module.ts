@@ -11,6 +11,7 @@ import { AuthGuard } from './core/auth.guard';
 import { AdminGuard } from './core/admin.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { ModeratorGuard } from './core/moderator.guard';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: UserProfileComponent },
+  { path: 'cart', component: CartComponent },
   { path: '404', component: NotFoundComponent }
 ];
 

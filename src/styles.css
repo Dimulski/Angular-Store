@@ -25,3 +25,11 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+body {
+  background: url(src\assets\backgrounds\background-division2.jpg) no-repeat scroll center top #000;;
+  background-attachment: fixed;
+  background-color: #FFF;
+  padding: 0px;
+  padding-bottom: 30px;
+}

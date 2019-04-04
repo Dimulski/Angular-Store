@@ -5,7 +5,6 @@
         <div *ngIf="auth.user$ | async; then authenticated else guest">
 
         </div>  
-        <!-- Hello! Please <a href="login">Login</a> or <a href="register">Register</a>! <a href="profile">Profile</a> -->
       </div>
 
       <ng-template #guest>
@@ -19,7 +18,7 @@
       </ng-template>
 
       <div class="cart col-sm-6">
-        <a href="#cart" title="My Cart">
+        <a href="cart" title="My Cart">
           <img id="cart-img" src="assets\icons\shopping-cart.png" alt="cart">
             {{ cart.getProductCount() }} produdct(s) - ${{ cart.getTotalPrice() }}
           <img src="assets\icons\separator-line.png" alt="separator-line">
