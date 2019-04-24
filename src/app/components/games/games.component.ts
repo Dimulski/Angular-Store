@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { CartService } from 'src/app/core/cart.service';
 
 @Component({
   selector: 'app-games',
@@ -13,7 +14,7 @@ export class GamesComponent implements OnInit {
   genresGames: any[];
   p: { [id: string]: number} = {};
 
-  constructor(db: AngularFirestore) {
+  constructor(db: AngularFirestore, public cart: CartService) {
     db.collection('/games').valueChanges().subscribe((games) => {
       this.games = games;
     });
@@ -35,4 +36,8 @@ export class GamesComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  public addToCart(productName) {
+    this.cart.addProduct(productName);
+  }
 }

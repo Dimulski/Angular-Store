@@ -32,7 +32,7 @@
                 ${{game.price}}
               </div>
               <div class="cart">
-                <input type="button" value="Buy" class="button" />
+                <input type="button" value="Buy" class="button" (click)="addToCart(game.name)"/>
               </div>
             </div>
           </div>

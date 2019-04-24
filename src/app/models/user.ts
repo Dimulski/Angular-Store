@@ -7,4 +7,6 @@ export interface User {
   photoURL?: string;
   displayName?: string;
   favouriteColor?: string;
+  cart: [],
+  cartQ: []
 }

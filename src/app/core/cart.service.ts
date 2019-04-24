@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CartService {
   private products: any[];
   private productsQ: [];
 
-  constructor(private auth: AuthService, private afs: AngularFirestore) {
+  constructor(private auth: AuthService, private afs: AngularFirestore, private router: Router) {
     this.productCount = 0; // if initialization is inside user subscription maybe templating will be easier
     this.products = [];
     this.productsQ = [];
@@ -80,10 +81,31 @@ export class CartService {
     }
   }
 
-  removeProduct(index: number) {
-    console.log('ay yo mane')
+  addProduct(productName: string) {
+    productName = productName.toLowerCase().replace(/\s+/g, '-');
     if (this.user) {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.user.uid}`);
+      console.log(this.user['cart']);
+      console.log(this.user['cartQ']);
+      if (this.user['cart'].includes(productName)) {
+        this.user['cartQ'][this.user['cart'].indexOf(productName)] += 1;
+      } else {
+        this.user['cart'].push(productName);
+        this.user['cartQ'].push(1);
+      }
+
+      let updateduser = {};
+      updateduser['cart'] = this.user['cart'];
+      updateduser['cartQ'] = this.user['cartQ'];
+      userRef.update(updateduser);
+    } else {
+      this.router.navigate(['/login'])
+    }
+  }
+
+  removeProduct(index: number) {
+    if (this.user) {
+      let userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.user.uid}`);
       if (this.user['cart'].length == 1) {
         this.user['cartQ'] = [];
         this.user['cart'] = [];
@@ -91,11 +113,10 @@ export class CartService {
         this.user['cartQ'].splice(index, 1);
         this.user['cart'].splice(index, 1);
       }
-      let newUser = {};
-      newUser['cartQ'] = this.user['cartQ'];
-      newUser['cart'] = this.user['cart'];
-      
-      userRef.update(newUser);
+      userRef.set(this.user)
+      setTimeout(() => {
+        location.reload()
+      }, 100);
     }
   }
 }

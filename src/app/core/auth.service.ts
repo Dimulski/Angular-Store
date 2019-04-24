@@ -50,9 +50,9 @@ export class AuthService {
   private oAuthLogin(provider) {
     this.afAuth.auth.signInWithPopup(provider)
     .then((credential) => {
-      // this.updateUserData(credential.user).catch(error => { // updating might not be necessary
-      //   console.log(error); // todo: notify properly
-      // });
+      this.updateUserData(credential.user).catch(error => { // updating might not be necessary
+        console.log(error); // todo: notify properly
+      });
       this.ngZone.run(() => this.router.navigate(['/profile']));
     }).catch((error) => {
       this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(providers => {
@@ -144,7 +144,9 @@ export class AuthService {
         photoURL: user.photoURL,
         roles: {
           guest: true
-        }
+        },
+        cart: [],
+        cartQ: []
       }
       data['password'] = password;
 
@@ -171,7 +173,9 @@ export class AuthService {
       photoURL: user.photoURL,
       roles: {
         guest: true
-      }
+      },
+      cart: [],
+      cartQ: []
     }
 
     return userRef.set(data, { merge: true });
