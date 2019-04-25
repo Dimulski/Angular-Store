@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddGameService } from './add-game.service';
 import { Game } from '../../models/game';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-game',
@@ -20,8 +21,9 @@ export class AddGameComponent implements OnInit {
   slide: string;
   slideNum: number;
   inStock: boolean;
+  genres: string;
 
-  constructor(private db: AngularFirestore, private addGameService: AddGameService) { }
+  constructor(private db: AngularFirestore, private addGameService: AddGameService, public router: Router) { }
 
   ngOnInit() { }
 
@@ -38,6 +40,7 @@ export class AddGameComponent implements OnInit {
       'description': this.description || "",
       'cover': this.cover || "",
       'slide': this.slide || "",
+      'genres': this.genres.split(', '),
       'in_stock': this.inStock || false
     }
     if (typeof this.slideNum !== 'undefined') {
@@ -46,5 +49,8 @@ export class AddGameComponent implements OnInit {
 
     var gameId = this.name.trim().toLowerCase().replace(/\s+/g, '-');
     this.db.collection('games').doc(gameId).set(gameObject);
+    setTimeout(() => {
+      this.router.navigate(['/games']);
+    }, 1000);
   }
 }
