@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CartService } from 'src/app/core/cart.service';
 
 @Component({
   selector: 'app-top-ten',
@@ -10,7 +11,7 @@ export class TopTenComponent implements OnInit {
 
   @Input() allGames: Observable<any[]>;
 
-  constructor() { }
+  constructor(public cartService: CartService) { }
 
   ngOnInit() { }
 }

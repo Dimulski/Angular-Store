@@ -6,6 +6,14 @@
   font-size: 13px;
 }
 
+.empty-cart {
+  text-align: center;
+  background: white;
+  padding: 35px;
+  padding-bottom: 60px;
+  font-size: 13px;
+}
+
 .table {
   margin: 20px;
 }
@@ -46,7 +54,6 @@
 }
 
 .remove-item img {
-  /* background-image: url("remove.png") no-repeat; */
   width: 20px;
   float: left;
   margin-left: 25px;
@@ -142,4 +149,40 @@
   background-color: #24C0EB;
   color: #FFF;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.empty {
+  padding-top: 70px;
+}
+
+.empty p {
+  font-size: 15px;
+}
+
+.buttons {
+  text-align: center;
+  clear: both;
+  padding: 17px 0px;
+  transition-duration: 1s;
+  transition: background-color ease-in 0.5s;
+}
+
+.button-inverse, a.button-inverse {
+  border-color: #373737;
+  color: #FFF !important;
+  background-color: #505050;
+  background-image: none;
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.button-inverse:hover, a.button-inverse:hover {
+  background-color: #222222;
+  text-decoration: none;
 }

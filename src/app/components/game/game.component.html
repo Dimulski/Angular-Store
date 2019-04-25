@@ -79,7 +79,7 @@
               Price: <span id="price">${{game.price}}</span>
             </div>
             <div class="buy col-sm-5">
-              <input type="button" value="Buy" id="buy-button" class="button">
+              <input type="button" value="Buy" id="buy-button" class="button" (click)="cartService.addProduct(game.name)">
             </div>
           </div>
           <div class="details table">

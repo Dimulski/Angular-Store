@@ -94,10 +94,10 @@ export class CartService {
         this.user['cartQ'].push(1);
       }
 
-      let updateduser = {};
-      updateduser['cart'] = this.user['cart'];
-      updateduser['cartQ'] = this.user['cartQ'];
-      userRef.update(updateduser);
+      let updatedUser = {};
+      updatedUser['cart'] = this.user['cart'];
+      updatedUser['cartQ'] = this.user['cartQ'];
+      userRef.update(updatedUser);
     } else {
       this.router.navigate(['/login'])
     }
@@ -113,6 +113,19 @@ export class CartService {
         this.user['cartQ'].splice(index, 1);
         this.user['cart'].splice(index, 1);
       }
+      userRef.set(this.user)
+      setTimeout(() => {
+        location.reload()
+      }, 100);
+    }
+  }
+
+  orderItems() {
+    if (this.user) {
+      let userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.user.uid}`);
+      alert('Order Sent!')
+      this.user['cartQ'] = [];
+      this.user['cart'] = [];
       userRef.set(this.user)
       setTimeout(() => {
         location.reload()

@@ -7,4 +7,7 @@ export interface Game {
   inStock: boolean;
   slide: string;
   slideNum: number;
+  views: number;
+  purcheses: number;
+  rating: number;
 }

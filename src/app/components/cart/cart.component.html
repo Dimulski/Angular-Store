@@ -1,4 +1,21 @@
 <div class="container col-sm-12">
+
+  <div *ngIf="cart.getProducts().length == 0; then empty else full">
+  </div>
+    
+  <ng-template #empty>
+    <div class="empty-cart">
+        <h3>Cart</h3>
+        <div class="empty">
+          <p>Your Cart is empty!</p>
+        </div>
+        <div class="buttons">
+          <a href="/" class="button button-default button-inverse">Continue</a>
+        </div>
+    </div>
+  </ng-template>
+    
+  <ng-template #full>
   <div class="cart">
     <h3>Cart</h3>
     <div class="row">
@@ -62,9 +79,11 @@
       <div class="buttons">
         <span class="cart-buttons">
           <input type="button" id="button-continue-shopping" value="Continue Shopping" onclick="location.href='#'">
-          <input type="button" id="button-order" value="Order" onclick="location.href='#'">
+          <input type="button" id="button-order" value="Order" (click)="cart.orderItems()">
         </span>
       </div>
     </div>
-  </div>
+  </div> 
+  </ng-template>
+
 </div>

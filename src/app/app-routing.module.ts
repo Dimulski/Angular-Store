@@ -12,11 +12,12 @@ import { AdminGuard } from './core/admin.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { ModeratorGuard } from './core/moderator.guard';
 import { CartComponent } from './components/cart/cart.component';
+import { CanAddGuard } from './core/can-add.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'add-game', component: AddGameComponent, canActivate: [ModeratorGuard] },
+  { path: 'add-game', component: AddGameComponent, canActivate: [CanAddGuard] },
   { path: 'game/:name', component: GameComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
