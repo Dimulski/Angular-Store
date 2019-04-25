@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   featuredGames: Observable<any[]>;
   
   constructor(db: AngularFirestore) {
-    this.allGames = db.collection('/games').valueChanges();
+    this.allGames = db.collection('/games', ref => ref.limit(10)).valueChanges();
     this.featuredGames = db.collection('/games', ref => ref.orderBy('slide_num')).valueChanges();
   }
 

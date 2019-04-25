@@ -50,7 +50,7 @@ export class AuthService {
   private oAuthLogin(provider) {
     this.afAuth.auth.signInWithPopup(provider)
     .then((credential) => {
-      this.updateUserData(credential.user).catch(error => { // updating might not be necessary
+      this.updateUserData(credential.user).catch(error => {
         console.log(error); // todo: notify properly
       });
       this.ngZone.run(() => this.router.navigate(['/profile']));
