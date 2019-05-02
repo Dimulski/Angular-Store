@@ -1,5 +1,5 @@
 <div class="container col-sm-12">
-  <div class="game" *ngIf="game | async as game">
+  <div class="game" *ngIf="gameObservable | async as game">
     <div class="row">
       <div class="col-sm-5">
         <div class="image">
@@ -84,7 +84,7 @@
           </div>
           <div class="details table">
             <div class="row">
-              <div class="label">Genre:</div>
+              <div class="label">Genres:</div>
               <div class="content">{{game.genres.join(' - ')}}</div>
             </div>
             <div class="row">

@@ -10,6 +10,9 @@ import { CartService } from 'src/app/core/cart.service';
 export class TopTenComponent implements OnInit {
 
   @Input() allGames: Observable<any[]>;
+  @Input() hotGames: Observable<any[]>;
+  @Input() latestGames: Observable<any[]>
+  @Input() bestsellerGames: Observable<any[]>
 
   constructor(public cartService: CartService) { }
 

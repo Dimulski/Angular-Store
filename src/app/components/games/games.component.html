@@ -16,7 +16,7 @@
       [attr.id]="'v-pills-' + genre.key"
       [attr.aria-labelledby]="'v-pills-' + genre.key + '-tab'">
         <div class="product-box">
-          <div *ngFor="let game of genre.value[0] | paginate: { id: genre.key, itemsPerPage: 5, currentPage: p[genre.key] }" class="grid-box">
+          <div *ngFor="let game of genre.value[0] | paginate: { id: genre.key, itemsPerPage: 12, currentPage: p[genre.key] }" class="grid-box">
             <div class="inner">
               <div class="image">
                 <a href="game/{{game.name  | toLowerHyphen}}">

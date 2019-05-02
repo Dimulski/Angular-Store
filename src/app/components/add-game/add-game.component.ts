@@ -3,6 +3,7 @@ import { AddGameService } from './add-game.service';
 import { Game } from '../../models/game';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-add-game',
@@ -41,7 +42,11 @@ export class AddGameComponent implements OnInit {
       'cover': this.cover || "",
       'slide': this.slide || "",
       'genres': this.genres.split(', '),
-      'in_stock': this.inStock || false
+      'in_stock': this.inStock || false,
+      'views': 0,
+      'purchases': 0,
+      'rating': 0,
+      'createdAt': firebase.firestore.FieldValue.serverTimestamp()
     }
     if (typeof this.slideNum !== 'undefined') {
       gameObject['slide_num'] = this.slideNum;

@@ -3,9 +3,10 @@ import { Observable, of } from 'rxjs';
 import { User } from '../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { Game } from '../models/game';
 
 @Injectable({
   providedIn: 'root'
@@ -123,6 +124,14 @@ export class CartService {
   orderItems() {
     if (this.user) {
       let userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.user.uid}`);
+      this.user['cart'].forEach(game => {
+        const gameRef: AngularFirestoreDocument<Game> = this.afs.doc('games/' + game);
+        gameRef.valueChanges().pipe(take(1)).subscribe(game => {
+          game.purchases += 1;
+          gameRef.update(game);
+        });
+      });
+
       alert('Order Sent!')
       this.user['cartQ'] = [];
       this.user['cart'] = [];

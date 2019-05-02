@@ -8,6 +8,6 @@ export interface Game {
   slide: string;
   slideNum: number;
   views: number;
-  purcheses: number;
+  purchases: number;
   rating: number;
 }

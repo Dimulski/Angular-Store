@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/cart.service';
+import { Game } from 'src/app/models/game';
+import { first, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game',
@@ -11,11 +13,16 @@ import { CartService } from 'src/app/core/cart.service';
 })
 export class GameComponent implements OnInit {
 
-  game: Observable<any>;
+  public gameObservable: Observable<Game>;
 
-  constructor(route: ActivatedRoute, db: AngularFirestore, public cartService: CartService) {
-    let gameName = route.snapshot.paramMap.get('name');
-    this.game = db.collection('/games').doc(gameName).valueChanges();
+  constructor(route: ActivatedRoute, public db: AngularFirestore, public cartService: CartService) {
+    let gamePath = route.snapshot.paramMap.get('name');
+    const gameRef: AngularFirestoreDocument<Game> = this.db.doc('games/' + gamePath);
+    this.gameObservable = gameRef.valueChanges();
+    this.gameObservable.pipe(take(1)).subscribe(game => {
+      game.views += 1;
+      gameRef.update(game);
+    });
   }
 
   ngOnInit() { }

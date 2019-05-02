@@ -10,14 +10,14 @@
       <li class="nav-item">
         <a class="nav-link" id="pills-best-sellers-tab" data-toggle="pill" href="#pills-best-sellers" role="tab" aria-controls="pills-best-sellers" aria-selected="false">Best Sellers</a>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" id="pills-promos-tab" data-toggle="pill" href="#pills-promos" role="tab" aria-controls="pills-promos" aria-selected="false">Promos</a>
-        </li>
+      <li class="nav-item" title="Coming Soon">
+        <a class="nav-link disabled" id="pills-promos-tab" data-toggle="pill" href="#pills-promos" role="tab" aria-controls="pills-promos" aria-selected="false">Promos</a>
+      </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-hot" role="tabpanel" aria-labelledby="pills-hot-tab">
         <div class="product-box">
-          <div *ngFor="let game of allGames | async" class="grid-box">
+          <div *ngFor="let game of hotGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
                 <a href="game/{{game.name | toLowerHyphen}}">
@@ -41,7 +41,7 @@
       </div>
       <div class="tab-pane fade" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
         <div class="product-box">
-          <div *ngFor="let game of allGames | async" class="grid-box">
+          <div *ngFor="let game of latestGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
                 <a href="game/{{game.name | toLowerHyphen}}">
@@ -65,7 +65,7 @@
       </div>
       <div class="tab-pane fade" id="pills-best-sellers" role="tabpanel" aria-labelledby="pills-best-sellers-tab">
         <div class="product-box">
-          <div *ngFor="let game of allGames | async" class="grid-box">
+          <div *ngFor="let game of bestsellerGames | async" class="grid-box">
             <div class="inner">
               <div class="image">
                 <a href="game/{{game.name | toLowerHyphen}}">
@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-promos" role="tabpanel" aria-labelledby="pills-promos-tab">
+      <div class="tab-pane fade" id="pills-promos" role="tabpanel" aria-labelledby="pills-promos-tab" >
         <div class="product-box">
           <div *ngFor="let game of allGames | async" class="grid-box">
             <div class="inner">
