@@ -26,4 +26,26 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  public getSlideNumbers(galleryLength: number): any[] {
+    let slideNumbers = [];
+    let numberOfSlides = Math.ceil(galleryLength / 4)
+    for (let i = 0; i < numberOfSlides; i++) {
+      slideNumbers.push(i);
+    }
+
+    return slideNumbers;
+  }
+
+  public getSlideThumbnails(slideNumber: number, gallery: any[]): any[] {
+    let slideThumbnails = [];
+    let start = slideNumber * 4
+    for (let i = start; i < start + 4; i++) {
+      if (gallery[i] != undefined) {
+        slideThumbnails.push(gallery[i])
+      }
+    }
+
+    return slideThumbnails;
+  }
 }

@@ -10,4 +10,5 @@ export interface Game {
   views: number;
   purchases: number;
   rating: number;
+  gallery: [];
 }

@@ -7,55 +7,18 @@
             <img src="{{game.cover}}">
           </a>
         </div>
+        
         <div class="highlights">
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li *ngFor="let slideNumber of getSlideNumbers(game.gallery.length); let first = first;" 
+              data-target="#carouselExampleIndicators" [attr.data-slide-to]="slideNumber" [class.active]="first"></li>
             </ol>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                    <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_2036ad636be8fa2c4bf926004f369bb97490350a.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-              </div>
-              <div class="carousel-item">
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                    <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_2036ad636be8fa2c4bf926004f369bb97490350a.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-              </div>
-              <div class="carousel-item">
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                      <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
-                  <div class="thumbnail col-md-3">
-                    <a href="#"><img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_2036ad636be8fa2c4bf926004f369bb97490350a.116x65.jpg?t=1550294247" alt="Image" style="max-width:100%;"></a>
-                  </div>
+              <div *ngFor="let slideNumber of getSlideNumbers(game.gallery.length); let first = first;" class="carousel-item" [class.active]="first">
+                <div class="thumbnail col-md-3" *ngFor="let thumbnail of getSlideThumbnails(slideNumber, game.gallery)">
+                  <a href="#"><img src="{{thumbnail}}" alt="Image" style="max-width:100%;"></a>
+                </div>
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -68,6 +31,7 @@
             </a>
           </div>
         </div>
+        
       </div>
       <div class="col-sm-7">
         <div class="game-info">
