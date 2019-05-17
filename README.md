@@ -3,12 +3,13 @@ Angular Store - https://angular-store-f3cbb.firebaseapp.com/
 *Work on progress*
 
 To-do:
-- add form validation
-- add error handling
-- add anonymous auth and password reset
-- add user profile options
+- add screenshots to all games
+- implement screenshot slideshow
+- improve profile page
 - fix game page system requirements
-- fix game screenshots gallery
-- export game component for reuse
+- improve game details tab
 - add toasts
+- add form validation, error handling
+- add anonymous auth and password reset
+- export game component for reuse
 - add more functionality like game bundles
