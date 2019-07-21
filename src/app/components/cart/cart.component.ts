@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/core/cart.service';
+import { PaymentService } from 'src/app/core/payment.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +11,11 @@ import { CartService } from 'src/app/core/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public cart: CartService) {
+  readonly url = "https://localhost:44397/api/values"
+  post: Observable<any>;
+
+  constructor(public cart: CartService, public http: HttpClient) {
+    
   }
 
   ngOnInit() { }
@@ -27,6 +34,17 @@ export class CartComponent implements OnInit {
   }
 
   public orderItems() {
-    this.cart.orderItems();
+    // This call might not be necessary considering I call cart.orderItems in the html template
+    this.cart.orderItems(); 
+  }
+
+  public sendPaymentInfo() {
+    const payment = {
+      testInfo: "Test payment info"
+    }
+
+    this.post = this.http.post(this.url, {["test credit card details"]: 2}, {
+      headers: {'Content-Type':'application/json'}});
+    
   }
 }

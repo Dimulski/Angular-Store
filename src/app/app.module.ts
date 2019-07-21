@@ -30,6 +30,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { PaymentService } from './core/payment.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,9 +61,10 @@ import { CartComponent } from './components/cart/cart.component';
     AngularFirestoreModule,
     FormsModule,
     NgxPaginationModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

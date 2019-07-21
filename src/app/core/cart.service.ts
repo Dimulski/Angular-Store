@@ -132,7 +132,7 @@ export class CartService {
         });
       });
 
-      alert('Order Sent!')
+      alert('Order Sent!!')
       this.user['cartQ'] = [];
       this.user['cart'] = [];
       userRef.set(this.user)

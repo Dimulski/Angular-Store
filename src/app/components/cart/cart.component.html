@@ -79,9 +79,11 @@
       <div class="buttons">
         <span class="cart-buttons">
           <input type="button" id="button-continue-shopping" value="Continue Shopping" onclick="location.href='#'">
-          <input type="button" id="button-order" value="Order" (click)="cart.orderItems()">
+          {{ post | async | json }}
+          <input type="button" id="button-order" value="Order" (click)="sendPaymentInfo()">
         </span>
       </div>
+      
     </div>
   </div> 
   </ng-template>
