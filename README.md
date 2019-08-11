@@ -3,7 +3,6 @@ Angular Store - https://angular-store-f3cbb.firebaseapp.com/
 *Work on progress*
 
 To-do:
-- add screenshots to all games
 - implement screenshot slideshow
 - improve profile page
 - fix game page system requirements
