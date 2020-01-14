@@ -1,6 +1,6 @@
 Angular Store - https://angular-store-f3cbb.firebaseapp.com/
 
-*Work on progress*
+*Work in progress*
 
 To-do:
 - implement screenshot slideshow
